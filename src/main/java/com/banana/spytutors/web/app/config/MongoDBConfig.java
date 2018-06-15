@@ -31,8 +31,8 @@ public class MongoDBConfig {
 	public @Bean MongoDbFactory mongoDbFactory() throws Exception {
 
 		Properties prop = fetchConfigProperties();
-		String host = prop.getProperty("mongodb.host");
-		int port = Integer.parseInt(prop.getProperty("mongodb.port"));
+		MongoClientURI uri = new MongoClientURI(
+			    "mongodb://abhi15:abhishek15@ds261570.mlab.com:61570/adsmobo");
 		String database = prop.getProperty("mongodb.db");
 
 		return new SimpleMongoDbFactory(new MongoClient(host, port), database);
